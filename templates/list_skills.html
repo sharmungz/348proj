@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Your Skills</h2>
+<ul>
+    {% for skill in skills %}
+    <li>
+        <strong>{{ skill.skill_name }}</strong> - {{ skill.weekly_goal }} hours per week
+        <a href="{{ url_for('skills.edit_skill', skill_id=skill.skill_id) }}">Edit</a>
+        <form action="{{ url_for('skills.delete_skill', skill_id=skill.skill_id) }}" method="POST" style="display:inline;">
+            <button type="submit">Delete</button>
+        </form>
+        <a href="{{ url_for('skills.add_entry', skill_id=skill.skill_id) }}">Add Entry</a>
+    </li>
+    {% endfor %}
+</ul>
+<a href="{{ url_for('skills.add_skill') }}">Add a new skill</a>
+{% endblock %}

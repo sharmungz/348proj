@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Add/Update Entry for {{ skill.skill_name }}</h2>
+    <form method="post">
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" value="{{ request.form.date or '' }}" required>
+        
+        <label for="duration">Duration (minutes):</label>
+        <input type="number" id="duration" name="duration" min="1" required>
+        
+        <label for="description">Description:</label>
+        <textarea id="description" name="description"></textarea>
+        
+        <button type="submit">Save Entry</button>
+    </form>
+    <a href="{{ url_for('skills.list_skills') }}">Back to Skills</a>
+{% endblock %} 
